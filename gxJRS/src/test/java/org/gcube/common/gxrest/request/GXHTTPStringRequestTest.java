@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 /**
  * Test cases for {@link GXHTTPStringRequest}
- * 
+ *
  * @author Manuele Simi (ISTI-CNR)
  *
  */
@@ -32,14 +32,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 public class GXHTTPStringRequestTest {
 
 	private GXHTTPStringRequest request;
-	
+
 	public static String DEFAULT_TEST_SCOPE = "";
-	
+
 	static String DEFAULT_RM_URL = "";
 
 	static String DEFAULT_RR_URL = "";
 
-	
+
 	private static boolean skipTest = false;
 
 	static {
@@ -97,14 +97,13 @@ public class GXHTTPStringRequestTest {
 		if (skipTest)
 			return;
 		request.clear();
-		String context ="{\"@class\":\"Context\",\"header\":{\"@class\":\"Header\",\"uuid\":\"6f86dc81-2f59-486b-8aa9-3ab5486313c4\",\"creator\":null,\"modifiedBy\":\"gxRestTest\",\"creationTime\":null,\"lastUpdateTime\":null},\"name\":\"gxTest\",\"parent\":null,\"children\":[]}";
+		String context ="{\"@class\":\"Context\",\"header\":{\"@class\":\"Header\",\"uuid\":\"b252e6ce-8b9a-4142-9bca-3ab5486313c4\",\"creator\":null,\"modifiedBy\":\"gxRestTest\",\"creationTime\":null,\"lastUpdateTime\":null},\"name\":\"gxTest\",\"parent\":null,\"children\":[]}";
 		Map<String,String> queryParams = new WeakHashMap<>();
 		queryParams.put("rrURL", DEFAULT_RR_URL);
 		try {
 			GXInboundResponse response = request.path("gxrest")
 					.header("Another header", "GXHTTPRequestTest")
 					.queryParams(queryParams).post(context);
-			assertTrue("Unexpected returned code.", response.hasCREATEDCode());
 			if (response.hasException()) {
 				try {
 					throw response.getException();
@@ -114,15 +113,15 @@ public class GXHTTPStringRequestTest {
 					e.printStackTrace();
 					throw e;
 				}
-			} else {
-				System.out.println("Returned string " + response.getStreamedContentAsString());
 			}
+			assertTrue("Unexpected returned code.", response.hasCREATEDCode());
+			System.out.println("Returned string " + response.getStreamedContentAsString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Failed to send a POST request");
-		}	
+		}
 	}
-	
+
 	@Test(expected=com.fasterxml.jackson.databind.JsonMappingException.class)
 	public void testPostNoBody() throws Exception {
 		if (skipTest)
@@ -152,7 +151,7 @@ public class GXHTTPStringRequestTest {
 			e.printStackTrace();
 			throw e;
 			//fail("Failed to send a POST request");
-		}	
+		}
 	}
 
 	/**
@@ -194,7 +193,7 @@ public class GXHTTPStringRequestTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Failed to send a DELETE request");
-		}	
+		}
 	}
 
 	/**
@@ -227,7 +226,7 @@ public class GXHTTPStringRequestTest {
 			fail("Failed to send a DELETE request");
 		}
 	}
-	
+
 
 	/**
 	 * Test method for {@link org.gcube.common.gxrest.request.GXHTTPStringRequest#head()}.
