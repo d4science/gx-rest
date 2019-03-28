@@ -1,6 +1,7 @@
 package org.gcube.common.gxrest.response.outbound;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -36,6 +37,16 @@ public class GXOutboundErrorResponse {
 	 */
 	public static void throwExceptionWithTrace(Exception exception, int keepLines, Response.Status status) {
 		throw new WebStreamException(exception, keepLines, status);
+	}
+
+	/**
+	 * Throws the exception to the client.
+	 * @param exception
+	 * @param keepLines number of lines in the stacktrace to keep (max is 5)
+	 * @param type the media type associated to the response
+	 */
+	public static void throwExceptionWithTrace(Exception exception, int keepLines, Response.Status status, MediaType type) {
+		throw new WebStreamException(exception, keepLines, status, type);
 	}
 	
 	/**

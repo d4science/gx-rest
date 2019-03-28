@@ -1,6 +1,8 @@
 package org.gcube.common.gxrest.response.outbound;
 
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.gcube.common.gxrest.response.entity.CodeEntity;
@@ -19,11 +21,24 @@ final class WebStreamException extends WebApplicationException {
 
 	/**
 	 * Returns the exception.
-	 * 
-	 * @param exception
-	 * @param keepLines
-	 * @param status
-	 *            the HTTP status to associate to the response.
+	 *
+	 * @param exception the exception
+	 * @param keepLines how many lines of the stacktrace are returned
+	 * @param status the HTTP status to associate to the response.
+	 * @param type the media type associated to the exception
+	 */
+	protected <E extends Exception> WebStreamException(E exception, int keepLines, Response.Status status, MediaType type) {
+		super(exception.getCause(), Response.status(status)
+				.entity(new CodeEntity(new SerializableErrorEntity(exception, keepLines))).type(type).tag(EntityTag.gxError).build());
+
+	}
+
+	/**
+	 * Returns the exception.
+	 *
+	 * @param exception the exception
+	 * @param keepLines how many lines of the stacktrace are returned
+	 * @param status the HTTP status to associate to the response.
 	 */
 	protected <E extends Exception> WebStreamException(E exception, int keepLines, Response.Status status) {
 		super(exception.getCause(), Response.status(status)
@@ -33,15 +48,26 @@ final class WebStreamException extends WebApplicationException {
 	/**
 	 * Returns the exception.
 	 * 
-	 * @param exception
-	 * @param status
-	 *            the HTTP status to associate to the response.
+	 * @param exception the exception
+	 * @param keepLines how many lines of the stacktrace are returned
+	 *
 	 */
 	protected <E extends Exception> WebStreamException(E exception, int keepLines) {
 		this(exception, keepLines, Response.Status.NOT_ACCEPTABLE);
 
 	}
 
+	/**
+	 * Returns the exception.
+	 *
+	 * @param exception the exception
+	 * @param keepLines how many lines of the stacktrace are returned
+	 *
+	 */
+	protected <E extends Exception> WebStreamException(E exception, int keepLines, MediaType type) {
+		this(exception, keepLines, Response.Status.NOT_ACCEPTABLE, type);
+
+	}
 	/**
 	 * Returns the exception.
 	 * 
@@ -61,4 +87,5 @@ final class WebStreamException extends WebApplicationException {
 	protected <E extends Exception> WebStreamException(E exception, Response.Status status) {
 		this(exception, 0, status);
 	}
+
 }
