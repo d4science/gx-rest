@@ -19,9 +19,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:https://svn.d4science.research-infrastructures.eu/gcube/trunk/common/${parent.artifactId}/${project.artifactId}</connection>
-		<developerConnection>scm:https://svn.d4science.research-infrastructures.eu/gcube/trunk/common/${parent.artifactId}/${project.artifactId}</developerConnection>
-		<url>https://svn.d4science.research-infrastructures.eu/gcube/trunk/common/${parent.artifactId}/${project.artifactId}</url>
+		<connection>scm:https://svn.d4science.research-infrastructures.eu/gcube/trunk/Common/${parent.artifactId}/${project.artifactId}</connection>
+		<developerConnection>scm:https://svn.d4science.research-infrastructures.eu/gcube/trunk/Common/${parent.artifactId}/${project.artifactId}</developerConnection>
+		<url>https://svn.d4science.research-infrastructures.eu/gcube/trunk/Common/${parent.artifactId}/${project.artifactId}</url>
 	</scm>
 	<dependencyManagement>
 		<dependencies>
