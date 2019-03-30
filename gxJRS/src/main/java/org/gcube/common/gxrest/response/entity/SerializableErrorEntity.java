@@ -3,7 +3,7 @@ package org.gcube.common.gxrest.response.entity;
 import org.gcube.common.gxrest.response.outbound.ErrorCode;
 
 /**
- * An entity that can be serialized in a {@link WebCodeException}.
+ * An entity that can be serialized in a {@link org.gcube.common.gxrest.response.outbound.WebCodeException}.
  * 
  * @author Manuele Simi (ISTI CNR)
  *
@@ -18,8 +18,7 @@ public class SerializableErrorEntity {
 	public SerializableErrorEntity() {}
 	
 	/**
-	 * @param id
-	 * @param message
+	 * @param errorCode the errorc code to serialize
 	 */
 	public SerializableErrorEntity(ErrorCode errorCode) {
 		this.id = errorCode.getId();
@@ -28,7 +27,7 @@ public class SerializableErrorEntity {
 
 	/**
 	 * 
-	 * @param e
+	 * @param e the exception to serialize
 	 */
 	public SerializableErrorEntity(Exception e) {
 		this.exceptionClass = e.getClass().getCanonicalName();
@@ -37,7 +36,8 @@ public class SerializableErrorEntity {
 	
 	/**
 	 * 
-	 * @param e
+	 * @param e the exception to serialize
+	 * @param lines the number of lines in the stacktrace to serialize
 	 */
 	public SerializableErrorEntity(Exception e, int lines) {
 		this.exceptionClass = e.getClass().getCanonicalName();
