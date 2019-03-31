@@ -9,7 +9,8 @@ import org.gcube.common.gxrest.response.outbound.ErrorCode;
  *
  */
 public class SerializableErrorEntity {
-	
+
+	protected final static char ENTITY_CHAR_SEPARATOR = '@';
 	private int id = -1;
 	private String message;
 	private String exceptionClass;
@@ -75,4 +76,29 @@ public class SerializableErrorEntity {
 	public boolean hasStackTrace() {
 		return !this.encodedTrace.isEmpty();
 	}
+
+	/**
+	 * Sets the message.
+	 * @param message
+	 */
+	protected void setMessage(String message) {
+		this.message = message;
+	}
+
+	/**
+	 * Sets the exception class.
+	 * @param exceptionClass
+	 */
+	protected void setExceptionClass(String exceptionClass) {
+		this.exceptionClass = exceptionClass;
+	}
+
+	/**
+	 * Sets the enconded trace.
+	 * @param encodedTrace
+	 */
+	protected void setEncodedTrace(String encodedTrace) {
+		this.encodedTrace = encodedTrace;
+	}
+
 }
