@@ -2,12 +2,11 @@ gxRest
 ----
 The gCube eXtensions to the Rest Protocol (gxRest) is a set of Java libraries designed to provide convenient round-trip interaction between a Restful web application (also known as "service") and its clients. 
 
-gxRest has the flexibility for different degrees of exploitation of the library:
+gxRest has the flexibility for different degrees of exploitation:
 * it can be entirely adopted both at client and service side with full benefit of its conventions;
-* it can be used just to send REST requests based only on plain HTTP;
-* it can be used to parse the HTTP code of a response;
-* it can be used only to return HTTP codes from the service.
-* it can be used only to return Exceptions from the service.
+* it can be used to send REST requests based only on plain HTTP;
+* it can be used only to return HTTP code/messagess from the service;
+* it can be used only to throw Exceptions from the service to the client.
     
 ## Modules
 * [gxHTTP](https://wiki.gcube-system.org/gcube/GxRest/GxHTTP)
