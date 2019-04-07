@@ -8,6 +8,70 @@ gxRest has the flexibility for different degrees of exploitation:
 * it can be used only to return HTTP code/messagess from the service;
 * it can be used only to throw Exceptions from the service to the client.
     
+## Examples of use
+
+Sending a request:
+```java
+GXHTTPRequest request = GXHTTPRequest.newRequest("http://host:port/service/").from("GXRequestTest");
+ 
+//prepare some parameters
+String context ="...";
+Map<String,String> queryParams = new WeakHashMap<>();
+queryParams.put("param name", "param value");
+
+GXInboundResponse response = request.path("context")
+	  .queryParams(queryParams).withBody(context).post();
+
+```
+   
+Returning a success response:   
+```java
+ @POST
+  public Response create(...) {
+ 
+    //Resource successfully created 
+ 
+    URI location = ... //URI of the new resource
+    return GXOutboundSuccessResponse.newCREATEResponse(location)
+              .withMessage("Context successfully created.")
+	      .ofType(MediaType.APPLICATION_JSON)
+              .build();
+  }
+``` 
+
+Throwing an exception:   
+```java
+@POST
+  public Response create(...) {
+ 
+    //Oh no, something failed here
+    GXOutboundErrorResponse.throwException(new RMContextAlreadyExistException("Context already exists."));
+    
+  }   
+``` 
+
+
+Parsing a response
+```java
+// invoke the create method and get a response.
+Response create = target("context").queryParam(...).request()
+		.post(Entity.entity(ISMapper.marshal(newContext), MediaType.APPLICATION_JSON + ";charset=UTF-8"));
+ 
+//wrap the response
+GXInboundResponse response = new GXInboundResponse(create);
+if (response.hasException()) 
+    throw response.getException();
+//assuming a created (200) code was expected 
+if (response.hasCREATEDCode()) {
+		System.out.println("Resource successfully created!");
+}
+//access content as string
+String value = response.getStreamedContentAsString();
+
+//unmasharll content as json
+Context returnedContext = response.tryConvertStreamedContentFromJson(Context.class);
+``` 
+    
 ## Modules
 * [gxHTTP](https://wiki.gcube-system.org/gcube/GxRest/GxHTTP)
 * [gxJRS](https://wiki.gcube-system.org/gcube/GxRest/GxJRS)
