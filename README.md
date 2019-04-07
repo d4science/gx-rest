@@ -33,7 +33,7 @@ Returning a success response:
  
     URI location = ... //URI of the new resource
     return GXOutboundSuccessResponse.newCREATEResponse(location)
-              .withMessage("Context successfully created.")
+              .withMessage("Resource successfully created.")
 	      .ofType(MediaType.APPLICATION_JSON)
               .build();
   }
@@ -45,7 +45,7 @@ Throwing an exception:
   public Response create(...) {
  
     //Oh no, something failed here
-    GXOutboundErrorResponse.throwException(new RMContextAlreadyExistException("Context already exists."));
+    GXOutboundErrorResponse.throwException(new MyCustomException("Resource already exists."));
     
   }   
 ``` 
