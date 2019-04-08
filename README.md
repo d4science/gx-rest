@@ -18,7 +18,6 @@ GXHTTPRequest request = GXHTTPRequest.newRequest("http://host:port/service/").fr
 String context ="...";
 Map<String,String> queryParams = new WeakHashMap<>();
 queryParams.put("param name", "param value");
-
 GXInboundResponse response = request.path("context")
 	  .queryParams(queryParams).withBody(context).post();
 
@@ -30,7 +29,7 @@ Returning a success response:
   public Response create(...) {
  
     //Resource successfully created 
- 
+    
     URI location = ... //URI of the new resource
     return GXOutboundSuccessResponse.newCREATEResponse(location)
               .withMessage("Resource successfully created.")
@@ -53,12 +52,8 @@ Throwing an exception:
 
 Parsing a response
 ```java
-// invoke the create method and get a response.
-Response create = target("context").queryParam(...).request()
-		.post(Entity.entity(ISMapper.marshal(newContext), MediaType.APPLICATION_JSON + ";charset=UTF-8"));
- 
-//wrap the response
-GXInboundResponse response = new GXInboundResponse(create);
+// invoke the remote method and get a response.
+GXInboundResponse response = ...;
 if (response.hasException()) 
     throw response.getException();
 //assuming a created (200) code was expected 
@@ -67,7 +62,6 @@ if (response.hasCREATEDCode()) {
 }
 //access content as string
 String value = response.getStreamedContentAsString();
-
 //unmasharll content as json
 Context returnedContext = response.tryConvertStreamedContentFromJson(Context.class);
 ``` 
@@ -78,7 +72,7 @@ Context returnedContext = response.tryConvertStreamedContentFromJson(Context.cla
     
 ## Deployment
     
-Notes about how to deploy this on an infrastructure or link to  wiki.
+Notes about how to deploy this component on an infrastructure or link to wiki doc.
 
 ## Documentation
 See gxRest on [Wiki](https://wiki.gcube-system.org/gcube/GxRest).
