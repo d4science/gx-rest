@@ -19,10 +19,11 @@
 	</properties>
 
 	<scm>
-		<connection>scm:https://svn.d4science.research-infrastructures.eu/gcube/trunk/Common/${parent.artifactId}/${project.artifactId}</connection>
-		<developerConnection>scm:https://svn.d4science.research-infrastructures.eu/gcube/trunk/Common/${parent.artifactId}/${project.artifactId}</developerConnection>
-		<url>https://svn.d4science.research-infrastructures.eu/gcube/trunk/Common/${parent.artifactId}/${project.artifactId}</url>
+		<connection>scm:git:https://code-repo.d4science.org/gCubeSystem/gxREST/${project.artifactId}</connection>
+		<developerConnection>scm:git:https://code-repo.d4science.org/gCubeSystem/gxREST/${project.artifactId}</developerConnection>
+		<url>scm:git:https://code-repo.d4science.org/gCubeSystem/gxREST/${project.artifactId}</url>
 	</scm>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- https://mvnrepository.com/artifact/org.glassfish.jersey/jersey-bom -->
