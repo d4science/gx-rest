@@ -72,7 +72,7 @@ Context returnedContext = response.tryConvertStreamedContentFromJson(Context.cla
     
 ## Deployment
     
-Notes about how to deploy this component on an infrastructure or link to wiki doc.
+Notes about how to deploy this component on an infrastructure or link to wiki doc (if any).
 
 ## Documentation
 See gxRest on [Wiki](https://wiki.gcube-system.org/gcube/GxRest).
