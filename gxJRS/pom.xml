@@ -41,13 +41,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.gcube.information-system</groupId>
-				<artifactId>information-system-bom</artifactId>
-				<version>1.5.0-SNAPSHOT</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
