@@ -10,7 +10,7 @@
 
 	<groupId>org.gcube.common</groupId>
 	<artifactId>gxREST</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.2</version>
 	<packaging>pom</packaging>
 	<name>gCube eXtensions to REST</name>
 	<description>gCube eXtensions to REST</description>
