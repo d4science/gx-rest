@@ -19,9 +19,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:https://code-repo.d4science.org/gCubeSystem/gxREST/${project.artifactId}</connection>
-		<developerConnection>scm:git:https://code-repo.d4science.org/gCubeSystem/gxREST/${project.artifactId}</developerConnection>
-		<url>scm:git:https://code-repo.d4science.org/gCubeSystem/gxREST/${project.artifactId}</url>
+		<connection>scm:git:https://code-repo.d4science.org/gCubeSystem/gx-rest</connection>
+		<developerConnection>scm:git:https://code-repo.d4science.org/gCubeSystem/gx-rest</developerConnection>
+		<url>scm:git:https://code-repo.d4science.org/gCubeSystem/gx-rest</url>
 	</scm>
 
 	<dependencyManagement>
